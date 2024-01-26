@@ -1,4 +1,4 @@
-package ru.fedorov.spring.SpacexAPI.dto;
+package ru.fedorov.spring.SpacexAPI.dtoMain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.fedorov.spring.SpacexAPI.models.Rocket;

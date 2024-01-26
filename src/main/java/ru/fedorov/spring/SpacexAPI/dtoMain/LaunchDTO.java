@@ -1,4 +1,4 @@
-package ru.fedorov.spring.SpacexAPI.dto;
+package ru.fedorov.spring.SpacexAPI.dtoMain;
 
 import java.util.Map;
 
