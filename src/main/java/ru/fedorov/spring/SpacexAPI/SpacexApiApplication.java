@@ -11,10 +11,4 @@ public class SpacexApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpacexApiApplication.class, args);
     }
-
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 }
-

@@ -1,23 +1,14 @@
 package ru.fedorov.spring.SpacexAPI.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class HeightDTO {
 
     private double meters;
     private double feet;
-
-    public double getMeters() {
-        return meters;
-    }
-
-    public void setMeters(double meters) {
-        this.meters = meters;
-    }
-
-    public double getFeet() {
-        return feet;
-    }
-
-    public void setFeet(double feet) {
-        this.feet = feet;
-    }
 }

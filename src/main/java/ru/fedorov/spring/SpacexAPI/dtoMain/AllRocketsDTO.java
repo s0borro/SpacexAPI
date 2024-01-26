@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LaunchDTO {
+public class AllRocketsDTO {
 
-    private String mission_name;
-    private int launch_year;
-    private Map<String, String> links;
+    private List<RocketDTO> rockets;
 }

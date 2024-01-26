@@ -1,23 +1,14 @@
 package ru.fedorov.spring.SpacexAPI.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MassDTO {
 
     private int kg;
     private int lb;
-
-    public int getKg() {
-        return kg;
-    }
-
-    public void setKg(int kg) {
-        this.kg = kg;
-    }
-
-    public int getLb() {
-        return lb;
-    }
-
-    public void setLb(int lb) {
-        this.lb = lb;
-    }
 }
