@@ -21,55 +21,188 @@ public class RocketDTO {
     private MassDTO mass;
     private List<PayloadWeightDTO> payload_weights;
     private FirstStageDTO first_stage;
+    private SecondStageDTO second_stage;
+    private EngineDTO engines;
+    private LandingLegDTO landing_legs;
+    private String wikipedia;
+    private String description;
+    private String rocket_id;
+    private String rocket_name;
+    private String rocket_type;
 
-        "second_stage": {
-        "engines": 1,
-                "fuel_amount_tons": 3.38,
-                "burn_time_sec": 378,
-                "thrust": {
-            "kN": 31,
-                    "lbf": 7000
-        },
-        "payloads": {
-            "option_1": "composite fairing",
-                    "composite_fairing": {
-                "height": {
-                    "meters": 3.5,
-                            "feet": 11.5
-                },
-                "diameter": {
-                    "meters": 1.5,
-                            "feet": 4.9
-                }
-            }
-        }
-    },
-        "engines": {
-        "number": 1,
-                "type": "merlin",
-                "version": "1C",
-                "layout": "single",
-                "engine_loss_max": 0,
-                "propellant_1": "liquid oxygen",
-                "propellant_2": "RP-1 kerosene",
-                "thrust_sea_level": {
-            "kN": 420,
-                    "lbf": 94000
-        },
-        "thrust_vacuum": {
-            "kN": 480,
-                    "lbf": 110000
-        },
-        "thrust_to_weight": 96
-    },
-        "landing_legs": {
-        "number": 0,
-                "material": null
-    },
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_1",
-            "description": "The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.",
-            "rocket_id": "falcon1",
-            "rocket_name": "Falcon 1",
-            "rocket_type": "rocket"
-    },
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public int getStages() {
+        return stages;
+    }
+
+    public void setStages(int stages) {
+        this.stages = stages;
+    }
+
+    public int getBoosters() {
+        return boosters;
+    }
+
+    public void setBoosters(int boosters) {
+        this.boosters = boosters;
+    }
+
+    public int getCost_per_launch() {
+        return cost_per_launch;
+    }
+
+    public void setCost_per_launch(int cost_per_launch) {
+        this.cost_per_launch = cost_per_launch;
+    }
+
+    public int getSuccess_rate_pct() {
+        return success_rate_pct;
+    }
+
+    public void setSuccess_rate_pct(int success_rate_pct) {
+        this.success_rate_pct = success_rate_pct;
+    }
+
+    public LocalDateTime getFirst_flight() {
+        return first_flight;
+    }
+
+    public void setFirst_flight(LocalDateTime first_flight) {
+        this.first_flight = first_flight;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public HeightDTO getHeight() {
+        return height;
+    }
+
+    public void setHeight(HeightDTO height) {
+        this.height = height;
+    }
+
+    public DiameterDTO getDiameter() {
+        return diameter;
+    }
+
+    public void setDiameter(DiameterDTO diameter) {
+        this.diameter = diameter;
+    }
+
+    public MassDTO getMass() {
+        return mass;
+    }
+
+    public void setMass(MassDTO mass) {
+        this.mass = mass;
+    }
+
+    public List<PayloadWeightDTO> getPayload_weights() {
+        return payload_weights;
+    }
+
+    public void setPayload_weights(List<PayloadWeightDTO> payload_weights) {
+        this.payload_weights = payload_weights;
+    }
+
+    public FirstStageDTO getFirst_stage() {
+        return first_stage;
+    }
+
+    public void setFirst_stage(FirstStageDTO first_stage) {
+        this.first_stage = first_stage;
+    }
+
+    public SecondStageDTO getSecond_stage() {
+        return second_stage;
+    }
+
+    public void setSecond_stage(SecondStageDTO second_stage) {
+        this.second_stage = second_stage;
+    }
+
+    public EngineDTO getEngines() {
+        return engines;
+    }
+
+    public void setEngines(EngineDTO engines) {
+        this.engines = engines;
+    }
+
+    public LandingLegDTO getLanding_legs() {
+        return landing_legs;
+    }
+
+    public void setLanding_legs(LandingLegDTO landing_legs) {
+        this.landing_legs = landing_legs;
+    }
+
+    public String getWikipedia() {
+        return wikipedia;
+    }
+
+    public void setWikipedia(String wikipedia) {
+        this.wikipedia = wikipedia;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRocket_id() {
+        return rocket_id;
+    }
+
+    public void setRocket_id(String rocket_id) {
+        this.rocket_id = rocket_id;
+    }
+
+    public String getRocket_name() {
+        return rocket_name;
+    }
+
+    public void setRocket_name(String rocket_name) {
+        this.rocket_name = rocket_name;
+    }
+
+    public String getRocket_type() {
+        return rocket_type;
+    }
+
+    public void setRocket_type(String rocket_type) {
+        this.rocket_type = rocket_type;
+    }
 }

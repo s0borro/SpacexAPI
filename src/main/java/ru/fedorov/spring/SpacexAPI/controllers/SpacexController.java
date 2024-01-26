@@ -1,11 +1,13 @@
 package ru.fedorov.spring.SpacexAPI.controllers;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import ru.fedorov.spring.SpacexAPI.dtoMain.RocketDTO;
+
+import java.util.List;
 
 
 @RestController
@@ -20,9 +22,9 @@ public class SpacexController {
     }
 
     @GetMapping("/rocketid")
-    public String getRocketId() {
+    public RocketDTO getRocketId() {
         String url = "https://api.spacexdata.com/v3/rockets";
-        String response = restTemplate.getForObject(url, String.class);
+        RocketDTO response = restTemplate.getForObject(url, RocketDTO.class);
         return response;
     }
 }

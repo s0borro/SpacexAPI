@@ -1,6 +1,6 @@
 package ru.fedorov.spring.SpacexAPI.dto;
 
-public class ThrustSeaLevelDTO {
+public class ThrustVacuumDTO {
 
     private int kN;
     private int lbf;
