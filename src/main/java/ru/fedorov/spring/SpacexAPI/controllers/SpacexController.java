@@ -2,7 +2,6 @@ package ru.fedorov.spring.SpacexAPI.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +14,9 @@ public class SpacexController {
 
     private final RestTemplate restTemplate;
 
-    private final ModelMapper modelMapper;
-
     @Autowired
-    public SpacexController(RestTemplate restTemplate, ModelMapper modelMapper) {
+    public SpacexController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/rocketid")

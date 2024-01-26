@@ -1,6 +1,6 @@
 package ru.fedorov.spring.SpacexAPI.dto;
 
-public class HeightDTO {
+public class DiameterDTO {
 
     private double meters;
     private double feet;
