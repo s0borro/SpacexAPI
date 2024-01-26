@@ -1,4 +1,4 @@
-package ru.fedorov.spring.SpacexAPI.dto;
+package ru.fedorov.spring.SpacexAPI.dtoForRocket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MassDTO {
+public class PayloadWeightDTO {
 
+    private String id;
+    private String name;
     private int kg;
     private int lb;
 }

@@ -3,7 +3,7 @@ package ru.fedorov.spring.SpacexAPI.dtoMain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.fedorov.spring.SpacexAPI.dto.*;
+import ru.fedorov.spring.SpacexAPI.dtoForRocket.*;
 import java.util.List;
 
 @Data

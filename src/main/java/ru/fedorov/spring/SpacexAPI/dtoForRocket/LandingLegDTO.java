@@ -1,4 +1,4 @@
-package ru.fedorov.spring.SpacexAPI.dto;
+package ru.fedorov.spring.SpacexAPI.dtoForRocket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HeightDTO {
+public class LandingLegDTO {
 
-    private double meters;
-    private double feet;
+    private int number;
+    private String material;
 }

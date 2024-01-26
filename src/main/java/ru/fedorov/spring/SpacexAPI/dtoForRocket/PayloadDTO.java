@@ -1,4 +1,4 @@
-package ru.fedorov.spring.SpacexAPI.dto;
+package ru.fedorov.spring.SpacexAPI.dtoForRocket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
