@@ -2,6 +2,8 @@ package ru.fedorov.spring.SpacexAPI.controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.criteria.From;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import ru.fedorov.spring.SpacexAPI.dtoMain.LaunchDTO;
+import ru.fedorov.spring.SpacexAPI.dtoMain.LaunchDTOShort;
 import ru.fedorov.spring.SpacexAPI.dtoMain.RocketDTO;
 
 import java.util.ArrayList;
@@ -26,22 +29,40 @@ public class SpacexController {
     private RestTemplate restTemplate;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private ModelMapper modelMapper;
 
     String urlForRockets = "https://api.spacexdata.com/v3/rockets";
 
     String urlForLaunches = "https://api.spacexdata.com/v3/launches";
 
     @GetMapping("/rocketid")
-    public List<?> getRocketId() {
+    public List<String> getRocketId() {
         ResponseEntity<List<RocketDTO>> response = restTemplate.exchange(urlForRockets, HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<RocketDTO>>() {});
+                null, new ParameterizedTypeReference<List<RocketDTO>>() {
+                });
         List<RocketDTO> rockets = response.getBody();
+
         return rockets.stream().map(RocketDTO::getRocket_id).collect(Collectors.toList());
     }
 
 
-    /*@GetMapping("/launches")
-    public ResponseEntity<LaunchDTO[]> getLaunches() {
-    }*/
+    @GetMapping("/launcheswithrocketid")
+    public List<LaunchDTO> getLaunches() {
+        ResponseEntity<List<LaunchDTO>> response = restTemplate.exchange(urlForLaunches, HttpMethod.GET,
+                null, new ParameterizedTypeReference<List<LaunchDTO>>() {
+                });
+
+        List<LaunchDTO> allLaunches = response.getBody();
+
+        List<String> rocketId = getRocketId();
+
+        for (LaunchDTO launchDTO : allLaunches) {
+            for (int i = 0; i < rocketId.size(); i++) {
+                if (launchDTO.getRocket().getRocket_id() != rocketId.get(i)) {
+                    allLaunches.remove(launchDTO);
+                }
+            }
+        }
+        return allLaunches;
+    }
 }
