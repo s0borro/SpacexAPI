@@ -1,23 +1,21 @@
 package ru.fedorov.spring.SpacexAPI.controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.criteria.From;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import ru.fedorov.spring.SpacexAPI.dtoMain.LaunchDTO;
 import ru.fedorov.spring.SpacexAPI.dtoMain.LaunchDTOShort;
 import ru.fedorov.spring.SpacexAPI.dtoMain.RocketDTO;
+import ru.fedorov.spring.SpacexAPI.util.MapperUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,31 +36,29 @@ public class SpacexController {
     @GetMapping("/rocketid")
     public List<String> getRocketId() {
         ResponseEntity<List<RocketDTO>> response = restTemplate.exchange(urlForRockets, HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<RocketDTO>>() {
-                });
-        List<RocketDTO> rockets = response.getBody();
+                null, new ParameterizedTypeReference<List<RocketDTO>>() {});
 
-        return rockets.stream().map(RocketDTO::getRocket_id).collect(Collectors.toList());
+        return response.getBody().stream().map(RocketDTO::getRocket_id).collect(Collectors.toList());
     }
 
-
-    @GetMapping("/launcheswithrocketid")
-    public List<LaunchDTO> getLaunches() {
+    @GetMapping("/launcheswithrocketid/{rocketid}")
+    public List<LaunchDTOShort> getLaunches(@PathVariable ("rocketid") String rocketId) {
         ResponseEntity<List<LaunchDTO>> response = restTemplate.exchange(urlForLaunches, HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<LaunchDTO>>() {
-                });
+                null, new ParameterizedTypeReference<List<LaunchDTO>>() {});
 
         List<LaunchDTO> allLaunches = response.getBody();
 
-        List<String> rocketId = getRocketId();
-
-        for (LaunchDTO launchDTO : allLaunches) {
-            for (int i = 0; i < rocketId.size(); i++) {
-                if (launchDTO.getRocket().getRocket_id() != rocketId.get(i)) {
-                    allLaunches.remove(launchDTO);
+        Iterator<LaunchDTO> iterator = allLaunches.iterator();
+        while (iterator.hasNext()) {
+            LaunchDTO launchDTO = iterator.next();
+                if (!launchDTO.getRocket().getRocket_id().equals(rocketId)) {
+                    iterator.remove();
                 }
             }
-        }
-        return allLaunches;
+        return MapperUtil.convertList(allLaunches, this::convertToLaunchDTOShort);
+    }
+
+    private LaunchDTOShort convertToLaunchDTOShort(LaunchDTO launchDTO) {
+        return modelMapper.map(launchDTO, LaunchDTOShort.class);
     }
 }
