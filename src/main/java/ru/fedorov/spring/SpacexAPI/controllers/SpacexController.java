@@ -56,7 +56,7 @@ public class SpacexController {
                 }
             }
         return MapperUtil.convertList(allLaunches, this::convertToLaunchDTOShort);
-        //
+        ///
     }
 
     private LaunchDTOShort convertToLaunchDTOShort(LaunchDTO launchDTO) {
